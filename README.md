@@ -1,4 +1,4 @@
-# Ansible Automation Platform - Event Drive Ansible (EDA): ansible-rulebook 
+# Ansible Automation Platform - Event Driven Ansible (EDA): ansible-rulebook 
 Author: Russell Zachary Feeser  
 GitLab & GitHub: @RZFeeser  
 Contact: https://iris7.com || https://rzfeeser.com  
@@ -13,7 +13,7 @@ Hey gang! Professor Feeser here. This repository is used to demonstrate ansible-
 ## Video Demos
 Videos demonstrating use of this playbook and rulebook are available on the author's [YouTube Channel @CodeWithFeeser](https://www.youtube.com/@CodeWithFeeser):  
 
-- [Ansible Automation Platform - Event Drive Ansible (EDA): ansible-rulebook ](https://youtu.be/32KR_3lYNzg)
+- [Ansible Automation Platform - Event Driven Ansible (EDA): ansible-rulebook ](https://youtu.be/32KR_3lYNzg)
 
 If you found a video helpful, be sure to hit **like** and **subscribe** for weekly lessons from [YouTube Channel @CodeWithFeeser](https://www.youtube.com/@CodeWithFeeser)
 
