@@ -1,0 +1,30 @@
+---
+# This rulebook listens for incoming webhook events and triggers playbooks based on the message content.
+- name: Webhook runs playbook        # Human-readable name for this EDA rulebook
+  hosts: localhost                   # The rulebook runs on the local system
+
+  sources:
+    - ansible.eda.webhook:           # Defines a webhook source plugin
+        host: 0.0.0.0                # Binds to all network interfaces (accepts requests from anywhere)
+        port: 5000                   # Listens on TCP port 5000
+        #token: supersecret           # (Optional) Shared secret token for authenticating webhook requests
+
+  rules:                             # List of rules that define when and how to react to events
+
+    - name: act when message says 'restart'  # First rule: handle restart messages
+      condition: event.payload.message is defined and event.payload.message == "restart"
+        # Checks if the incoming JSON event has a key "message" and that its value equals "restart"
+      action:
+        run_playbook:                # Specifies that a playbook should be executed when this rule matches
+          name: playbooks/notify.yml # Path to the playbook to run
+          extra_vars:
+            prof_feeser: "please trigger the restart handler playbook"  # Passes a variable into the playbook for context
+
+    - name: act on any message (fallback)  # Second rule: handles all other defined messages
+      condition: event.payload.message is defined
+        # Triggers when a message exists, regardless of its content
+      action:
+        run_playbook:
+          name: playbooks/notify.yml # Runs the same playbook as above
+          extra_vars:
+            prof_feeser: "please trigger the generic playbook"  # Passes a different variable to identify this as a generic event
