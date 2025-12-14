@@ -1,0 +1,17 @@
+---
+- name: Handle EDA event - Incoming Webhook
+  hosts: localhost
+  gather_facts: false
+  vars:    incoming: "{{ ansible_eda.event | default({}) }}"
+  tasks:
+    - name: Show the event payload
+      ansible.builtin.debug:
+        msg:
+          - "EDA received an event!"
+          - "webhook data: {{ incoming | default('n/a') }}"
+          - "source info: {{ incoming.meta.source | default('n/a') }}"
+          - "webhook msg sent: {{ incoming.payload.message | default('no-message') }}"
+    
+    - name: Show the extra var passed in
+      ansible.builtin.debug:
+        var: prof_feeser
